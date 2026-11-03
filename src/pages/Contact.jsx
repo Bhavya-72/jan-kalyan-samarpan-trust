@@ -57,7 +57,7 @@ export default function Contact() {
             <label className="block text-xs font-bold text-ink">Message<textarea required rows="5" name="message" value={form.message} onChange={update} placeholder="Write your message..." className="form-field resize-y"/></label>
             <button type="submit" className="inline-flex items-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-bold text-paper transition hover:bg-blue">Prepare message <Send size={15}/></button>
             {status && <p role="status" className="rounded-xl border border-gold/30 bg-goldLight/20 p-4 text-xs leading-6 text-ink">{status}</p>}
-            <p className="flex gap-2 text-xs leading-5 text-muted"><Info size={15} className="mt-0.5 shrink-0"/>The form is ready for email integration. Add the trust’s official email in <code>src/data/trustData.js</code> before publishing. It currently does not store or transmit submissions to a server.</p>
+            <p className="flex gap-2 text-xs leading-5 text-muted"><Info size={15} className="mt-0.5 shrink-0"/>The form is ready for email integration. </p>
           </form>
         </div>
       </section>

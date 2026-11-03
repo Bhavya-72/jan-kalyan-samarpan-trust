@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowUpRight, BookOpen, HeartPulse, Sprout, HandHeart, Droplets, Recycle, ShieldCheck } from 'lucide-react'
-import logo from '../assets/jan-kalyan-samarpan-logo.png'
+import logo from '../assets/jan-kalyan-samarpan.png'
 import { trust, focusAreas } from '../data/trustData'
 
 const introCards = [
@@ -38,8 +38,6 @@ export default function Home() {
               <span className="mt-3 h-px w-16 bg-gold"/>
               <p className="mt-3 text-[10px] font-bold uppercase tracking-[.2em] text-muted">Bawana · Delhi · India</p>
             </div>
-            <div className="absolute -bottom-2 -left-1 rounded-2xl border border-line bg-card px-5 py-4 shadow-soft sm:-left-8"><p className="font-display text-2xl text-navy">2026</p><p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-muted">Established</p></div>
-            <div className="absolute -right-1 top-8 grid h-16 w-16 place-items-center rounded-full bg-gold text-paper shadow-soft sm:-right-4"><HandHeart size={27}/></div>
           </motion.div>
         </div>
       </section>

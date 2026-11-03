@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
-import logo from '../assets/jan-kalyan-samarpan-logo.png'
+import logo from '../assets/jan-kalyan-samarpan.png'
 import { trust } from '../data/trustData'
 
 const links = [

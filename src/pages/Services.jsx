@@ -1,9 +1,16 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageIntro from '../components/PageIntro'
 import { focusAreas } from '../data/trustData'
 
 export default function Services() {
+  const [activeArea, setActiveArea] = useState(0)
+  const [touchStart, setTouchStart] = useState(null)
+
+  const showPreviousArea = () => setActiveArea((current) => Math.max(0, current - 1))
+  const showNextArea = () => setActiveArea((current) => Math.min(focusAreas.length - 1, current + 1))
+
   return (
     <main>
       <PageIntro eyebrow="Our charitable objectives" title={<>Areas of work.<br/><span className="text-gold">A shared purpose.</span></>} description="The trust deed sets out a range of charitable objectives focused on education, medical relief, public health, community welfare and the environment. The focus areas below are a plain-language summary of those stated objectives." />
@@ -12,15 +19,29 @@ export default function Services() {
           <div><p className="eyebrow">What the deed provides for</p><h2 className="display-title mt-3 text-4xl md:text-5xl">Our focus areas.</h2></div>
           <p className="max-w-md text-sm leading-7 text-muted">These are the trust’s stated areas of charitable purpose, not a claim that each activity is currently operating.</p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          onTouchStart={(event) => setTouchStart(event.touches[0].clientX)}
+          onTouchEnd={(event) => {
+            if (touchStart === null) return
+            const distance = event.changedTouches[0].clientX - touchStart
+            if (Math.abs(distance) > 40) distance < 0 ? showNextArea() : showPreviousArea()
+            setTouchStart(null)
+          }}
+        >
           {focusAreas.map(({icon: Icon, title, description}, index) => (
-            <article key={title} className="group rounded-3xl border border-line bg-card p-7 transition duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-soft md:p-8">
+            <article key={title} className={`${index === activeArea ? 'block' : 'hidden'} group rounded-3xl border border-line bg-card p-7 transition duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-soft sm:block md:p-8`}>
               <div className="flex items-center justify-between"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-goldLight/45 text-navy"><Icon size={22}/></span><span className="font-display text-lg text-gold/80">{String(index + 1).padStart(2, '0')}</span></div>
               <h3 className="mt-8 font-display text-2xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted">{description}</p>
               <div className="mt-7 h-px w-full bg-line transition group-hover:bg-gold"/>
               <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-navy">Trust deed objective</span>
             </article>
           ))}
+        </div>
+        <div className="mt-6 flex items-center justify-between sm:hidden">
+          <button type="button" onClick={showPreviousArea} disabled={activeArea === 0} aria-label="Previous focus area" className="grid h-11 w-11 place-items-center rounded-full border border-line text-navy disabled:opacity-30"><ArrowLeft size={17}/></button>
+          <span className="text-xs font-bold tracking-[.16em] text-muted">{String(activeArea + 1).padStart(2, '0')} / {String(focusAreas.length).padStart(2, '0')}</span>
+          <button type="button" onClick={showNextArea} disabled={activeArea === focusAreas.length - 1} aria-label="Next focus area" className="grid h-11 w-11 place-items-center rounded-full border border-line text-navy disabled:opacity-30"><ArrowRight size={17}/></button>
         </div>
       </section>
       <section className="bg-cream/70 py-16 md:py-20">

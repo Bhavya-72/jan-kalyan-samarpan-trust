@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, MapPin, Phone, Mail } from 'lucide-react'
-import logo from '../assets/jan-kalyan-samarpan-logo.png'
+import logo from '../assets/jan-kalyan-samarpan.png'
 import { trust } from '../data/trustData'
 
 export default function Footer() {
@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container-shell grid gap-12 py-14 md:grid-cols-[1.3fr_.7fr_1fr] md:py-16">
         <div>
           <div className="mb-5 flex items-center gap-3">
-            <span className="grid h-14 w-14 place-items-center rounded-full bg-paper p-1"><img src={logo} alt="" className="h-full w-full object-contain"/></span>
+            <span className="grid h-14 w-14 place-items-center rounded-full "><img src={logo} alt="" className="h-full w-full object-contain"/></span>
             <span className="font-display text-xl font-semibold">Jan Kalyan<br/>Samarpan Trust</span>
           </div>
           <p className="hindi max-w-sm text-sm leading-7 text-paper/70">{trust.tagline}</p>
