@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowDown, ArrowUpRight, BookOpen, HeartPulse, Sprout, HandHeart, Droplets, Recycle, ShieldCheck } from 'lucide-react'
 import logo from '../assets/jan-kalyan-samarpan.png'
+import shalendra from '../assets/shalendra.png'
 import { trust, focusAreas } from '../data/trustData'
 
 const introCards = [
@@ -65,8 +66,8 @@ export default function Home() {
         <div className="container-shell">
           <div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-[.18em] text-goldLight">Trust leadership</p><h2 className="display-title mt-4 text-4xl md:text-5xl">The people named in the trust deed.</h2><p className="mt-5 leading-8 text-paper/70">The following names and roles are taken from the deed. Personal biographies and photographs were not included in the supplied documents.</p></div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            <div className="rounded-3xl border border-paper/15 bg-paper/[.06] p-7"><div className="grid h-14 w-14 place-items-center rounded-full bg-goldLight font-display text-lg text-navy">SK</div><h3 className="mt-6 font-display text-2xl">{trust.settlor}</h3><p className="mt-1 text-xs font-bold uppercase tracking-widest text-goldLight">Settlor</p><p className="mt-4 text-sm leading-7 text-paper/65">Named as the settlor in the trust deed.</p></div>
-            {trust.trustees.map(person => <div key={person.name} className="rounded-3xl border border-paper/15 bg-paper/[.06] p-7"><div className="grid h-14 w-14 place-items-center rounded-full bg-goldLight font-display text-lg text-navy">{person.name.split(' ').slice(1).map(x => x[0]).join('')}</div><h3 className="mt-6 font-display text-2xl">{person.name}</h3><p className="mt-1 text-xs font-bold uppercase tracking-widest text-goldLight">{person.role}</p><p className="mt-4 text-sm leading-7 text-paper/65">Named as a trustee in the trust deed.</p></div>)}
+            {trust.settlor.map(person => <div key={person.name} className="rounded-3xl border border-paper/15 bg-paper/[.06] p-7 text-center"><img src={person.image || shalendra || logo} alt={`${person.name} portrait`} className="mx-auto h-48 w-48 rounded-2xl object-cover"/><h3 className="mt-6 font-display text-2xl">{person.name}</h3><p className="mt-1 text-xs font-bold uppercase tracking-widest text-goldLight">{person.role}</p><p className="mt-4 text-sm leading-7 text-paper/65">Named as the settlor in the trust deed.</p></div>)}
+            {trust.trustees.map(person => <div key={person.name} className="rounded-3xl border border-paper/15 bg-paper/[.06] p-7 text-center"><img src={person.image || logo} alt={`${person.name} portrait`} className="mx-auto h-48 w-48 rounded-2xl object-cover"/><h3 className="mt-6 font-display text-2xl">{person.name}</h3><p className="mt-1 text-xs font-bold uppercase tracking-widest text-goldLight">{person.role}</p><p className="mt-4 text-sm leading-7 text-paper/65">Named as a trustee in the trust deed.</p></div>)}
           </div>
         </div>
       </section>

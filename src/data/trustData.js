@@ -3,6 +3,10 @@ import {
   Sprout, Users, Home, BriefcaseBusiness
 } from 'lucide-react'
 
+import Dinesh from '../assets/dinesh.jpeg';
+import Shalender from '../assets/shalendra.png';
+import Vikas from '../assets/vikas.png';
+
 export const trust = {
   name: 'Jan Kalyan Samarpan Trust',
   hindiName: 'जन कल्याण समर्पण ट्रस्ट',
@@ -10,10 +14,12 @@ export const trust = {
   address: 'Khasra No. 193/23, Main Delhi Road, Bawana, Delhi – 110039',
   phone: '9810402200', // Add the official public contact number before launch.
   email: 'jankalyansamarpantrust@gmail.com', // Add the official public email address before launch.
-  settlor: 'Shri Shalender Kumar',
+  settlor: [
+    { name: 'Shri Shalender Singh', role: 'Settlor', image: Shalender }
+  ],
   trustees: [
-    { name: 'Shri Vikas Yadav', role: 'Trustee' },
-    { name: 'Shri Dinesh Singh', role: 'Trustee' }
+    {name: 'Shri Vikas Yadav', role: 'Trustee',image: Vikas},
+    { name: 'Shri Dinesh Singh', role: 'Trustee', image: Dinesh }
   ],
   establishmentYear: '2026'
 }
