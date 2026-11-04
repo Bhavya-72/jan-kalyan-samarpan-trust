@@ -13,7 +13,7 @@ export default function Footer() {
             <span className="font-display text-xl font-semibold">Jan Kalyan<br/>Samarpan Trust</span>
           </div>
           <p className="hindi max-w-sm text-sm leading-7 text-paper/70">{trust.tagline}</p>
-          <p className="mt-3 max-w-sm text-sm leading-7 text-paper/65">Working towards public welfare through the charitable objectives set out in our trust deed.</p>
+          <p className="mt-3 max-w-sm text-sm leading-7 text-paper/65">Working towards public welfare through the charitable objectives set out in our trust .</p>
         </div>
         <div>
           <p className="text-xs font-bold uppercase tracking-[.17em] text-goldLight">Explore</p>

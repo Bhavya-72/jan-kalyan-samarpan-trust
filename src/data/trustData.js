@@ -23,7 +23,7 @@ export const trust = {
   name: 'Jan Kalyan Samarpan Trust',
   hindiName: 'जन कल्याण समर्पण ट्रस्ट',
   tagline: 'सेवा से संस्कार और समर्पण से समाज निर्माण',
-  address: 'Khasra No. 193/23, Main Delhi Road, Bawana, Delhi – 110039',
+  address: '',
   phone: '9810402200', // Add the official public contact number before launch.
   email: 'jankalyansamarpantrust@gmail.com', // Add the official public email address before launch.
   settlor: [

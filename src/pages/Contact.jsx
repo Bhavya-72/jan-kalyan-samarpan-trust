@@ -26,7 +26,7 @@ export default function Contact() {
       <section className="container-shell grid gap-12 py-16 md:grid-cols-[.82fr_1.18fr] md:py-24">
         <div>
           <p className="eyebrow">Find us</p><h2 className="display-title mt-3 text-3xl md:text-4xl">Get in touch.</h2>
-          <p className="mt-5 text-sm leading-7 text-muted">The registered office address below is taken from the trust deed. A public phone number and email address were not present in the supplied documents.</p>
+          <p className="mt-5 text-sm leading-7 text-muted">The registered office address below is taken from the trust . A public phone number and email address were not present in the supplied documents.</p>
           <div className="mt-9 space-y-5">
             <div className="flex gap-4 rounded-2xl border border-line bg-card p-5">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-goldLight/45 text-navy"><MapPin size={20}/></span>
