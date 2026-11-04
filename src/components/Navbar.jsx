@@ -1,16 +1,14 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import logo from '../assets/jan-kalyan-samarpan.png'
 import { trust } from '../data/trustData'
 
 const links = [
-  { label: 'Home', to: '/' },
-  { label: 'Services', to: '/services' },
-  { label: 'Contact', to: '/contact' }
+  { label: 'Our mission', to: '#mission' },
+  { label: 'How we help', to: '#focus' },
+  { label: 'About us', to: '#about' }
 ]
-const linkClass = ({ isActive }) =>
-  `text-sm font-semibold transition-colors ${isActive ? 'text-navy' : 'text-muted hover:text-ink'}`
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -26,10 +24,10 @@ export default function Navbar() {
           </span>
         </Link>
         <nav className="hidden items-center gap-9 md:flex" aria-label="Main navigation">
-          {links.map(link => <NavLink key={link.to} to={link.to} className={linkClass}>{link.label}</NavLink>)}
-          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-navy px-5 py-3 text-sm font-semibold text-paper transition hover:-translate-y-0.5 hover:bg-blue">
-            Get in touch <ArrowUpRight size={15} />
-          </Link>
+          {links.map(link => <a key={link.to} href={link.to} className="text-sm font-semibold text-muted transition-colors hover:text-ink">{link.label}</a>)}
+          <a href="#donate" className="inline-flex items-center gap-2 rounded-full bg-navy px-5 py-3 text-sm font-semibold text-paper transition hover:-translate-y-0.5 hover:bg-blue">
+            Support us <ArrowUpRight size={15} />
+          </a>
         </nav>
         <button className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line text-navy md:hidden" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -37,8 +35,8 @@ export default function Navbar() {
       </div>
       {open && <nav className="border-t border-line bg-paper px-6 py-5 md:hidden" aria-label="Mobile navigation">
         <div className="container-shell flex flex-col gap-5">
-          {links.map(link => <NavLink key={link.to} to={link.to} className={linkClass} onClick={() => setOpen(false)}>{link.label}</NavLink>)}
-          <Link to="/contact" onClick={() => setOpen(false)} className="text-sm font-bold text-navy">Get in touch ↗</Link>
+          {links.map(link => <a key={link.to} href={link.to} className="text-sm font-semibold text-muted" onClick={() => setOpen(false)}>{link.label}</a>)}
+          <a href="#donate" onClick={() => setOpen(false)} className="text-sm font-bold text-navy">Support us ↗</a>
         </div>
       </nav>}
     </header>

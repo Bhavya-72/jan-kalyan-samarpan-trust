@@ -1,83 +1,129 @@
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, BookOpen, HeartPulse, Sprout, HandHeart, Droplets, Recycle, ShieldCheck } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { ArrowDown, ArrowUpRight, HeartHandshake, Leaf, ShieldCheck, Sparkles } from 'lucide-react'
 import logo from '../assets/jan-kalyan-samarpan.png'
-import shalendra from '../assets/shalendra.png'
+import education from '../assets/education.png'
+import healthcare from '../assets/healthcare.jpeg'
+import community from '../assets/community.png'
+import childWelfare from '../assets/child welfare.png'
+import sanitation from '../assets/sanitation.png'
+import water from '../assets/water.png'
+import skills from '../assets/skills.png'
 import { trust, focusAreas } from '../data/trustData'
 
-const introCards = [
-  { icon: BookOpen, title: 'Education', text: 'Learning opportunities and educational assistance.' },
-  { icon: HeartPulse, title: 'Healthcare', text: 'Medical relief, health awareness and wellbeing.' },
-  { icon: Sprout, title: 'Community welfare', text: 'Clean, healthy and supportive communities.' }
+const highlights = [
+  { icon: HeartHandshake, title: 'Care with dignity', text: 'Every person deserves support that is respectful, human and inclusive.' },
+  { icon: Sparkles, title: 'Opportunity to grow', text: 'Education, skills and healthy communities can open the door to a better tomorrow.' },
+  { icon: Leaf, title: 'A healthier future', text: 'We care about the people and the places that make communities thrive.' }
+]
+
+const galleryImages = [
+  { image: education, alt: 'Education and learning' },
+  { image: healthcare, alt: 'Healthcare and wellbeing' },
+  { image: community, alt: 'Community support' },
+  { image: sanitation, alt: 'Cleanliness and sanitation' },
+  { image: water, alt: 'Water conservation' },
+  { image: skills, alt: 'Skills and vocational learning' }
 ]
 
 export default function Home() {
+  const focusRail = useRef(null)
+  const galleryRail = useRef(null)
+  const [galleryIndex, setGalleryIndex] = useState(0)
+  const [focusIndex, setFocusIndex] = useState(0)
+  const updateFocusIndex = (event) => {
+    const { scrollLeft, clientWidth } = event.currentTarget
+    setFocusIndex(Math.min(3, Math.round(scrollLeft / (clientWidth * 0.88))))
+  }
+  const updateGalleryIndex = (event) => {
+    const { scrollLeft, clientWidth } = event.currentTarget
+    setGalleryIndex(Math.min(galleryImages.length - 1, Math.round(scrollLeft / (clientWidth * 0.88))))
+  }
+
   return (
     <main>
-      <section className="relative overflow-hidden">
-        <div className="absolute -right-36 -top-32 h-[540px] w-[540px] rounded-full border border-gold/15"/>
-        <div className="absolute -right-20 -top-16 h-[400px] w-[400px] rounded-full border border-gold/20"/>
-        <div className="container-shell grid min-h-[650px] items-center gap-10 py-16 md:grid-cols-[1.08fr_.92fr] md:py-20">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="relative z-10">
-            <p className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-gold"/> A charitable trust<span className="h-px w-8 bg-gold"/></p>
-            <h1 className="display-title mt-7 max-w-2xl text-[3.25rem] sm:text-6xl lg:text-[5rem]"> सेवा, शिक्षा और <span className="text-gold">समर्पण</span> से बेहतर कल।</h1>
-            <p className="mt-7 max-w-xl text-base leading-8 text-muted md:text-lg">Jan Kalyan Samarpan Trust is established with a commitment to charitable work that supports education, healthcare, cleanliness, community welfare and environmental care.</p>
+      <section className="hero-section relative overflow-hidden" style={{ '--hero-image': `url("${childWelfare}")` }}>
+        <div className="hero-orb hero-orb-one" />
+        <div className="hero-orb hero-orb-two" />
+        <div className="container-shell relative grid min-h-[680px] items-center gap-14 py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
+          <div className="reveal relative z-10">
+            <p className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-gold" /> A charitable trust</p>
+            <h1 className="display-title mt-7 max-w-3xl text-[3.55rem] text-navy sm:text-6xl lg:text-[5.75rem]">
+              A little care can change a <span className="text-gold">whole future.</span>
+            </h1>
+            <p className="mt-7 max-w-xl text-base leading-8 text-muted md:text-lg">
+              Jan Kalyan Samarpan Trust works towards public welfare through education, healthcare, community support and care for our shared environment.
+            </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <Link to="/services" className="inline-flex items-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-bold text-paper transition hover:-translate-y-1 hover:bg-blue">Explore our focus areas <ArrowUpRight size={17}/></Link>
-              <Link to="/contact" className="rounded-full border border-line px-7 py-4 text-sm font-bold text-ink transition hover:border-gold hover:bg-cream">Contact the trust</Link>
+              <a href="#donate" className="inline-flex items-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-bold text-paper transition hover:-translate-y-1 hover:bg-blue">Support the mission <ArrowUpRight size={17} /></a>
+              <a href="#mission" className="rounded-full border border-line px-7 py-4 text-sm font-bold text-ink transition hover:border-gold hover:bg-cream">Discover our purpose</a>
             </div>
-            <div className="mt-14 flex items-center gap-4 text-xs font-semibold uppercase tracking-widest text-muted"><span className="grid h-9 w-9 place-items-center rounded-full border border-line"><ArrowDown size={15}/></span> सेवा से संस्कार और समर्पण से समाज निर्माण</div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .8, delay: .12 }} className="relative mx-auto flex min-h-[440px] w-full max-w-[500px] items-center justify-center">
-            <div className="soft-pattern absolute inset-8 rounded-[48%]"/>
-            <div className="absolute inset-2 rounded-[48%] border border-gold/35"/>
-            <div className="absolute inset-0 rounded-[48%] border border-navy/10"/>
-            <div className="relative z-10 flex w-[82%] flex-col items-center rounded-[36px] border border-gold/25 bg-paper/90 px-7 py-9 text-center shadow-soft backdrop-blur-sm">
-              <img src={logo} alt="Jan Kalyan Samarpan Trust official emblem" className="h-64 w-full object-contain sm:h-72"/>
-              <p className="hindi mt-2 text-sm font-semibold leading-7 text-navy">{trust.tagline}</p>
-              <span className="mt-3 h-px w-16 bg-gold"/>
-              <p className="mt-3 text-[10px] font-bold uppercase tracking-[.2em] text-muted"></p>
+            <a href="#mission" className="mt-14 inline-flex items-center gap-4 text-xs font-semibold uppercase tracking-[.18em] text-muted"><span className="grid h-9 w-9 place-items-center rounded-full border border-line"><ArrowDown size={15} /></span> Scroll to explore</a>
+          </div>
+          <div className="reveal relative mx-auto w-full max-w-[500px] [animation-delay:.15s] lg:hidden">
+            <div className="hero-image-frame">
+              <img src={childWelfare} alt="Children and community represented by the trust's work" />
             </div>
-          </motion.div>
+            <div className="hero-card absolute -bottom-7 -left-4 max-w-[245px] rounded-3xl border border-gold/25 bg-paper/95 p-5 shadow-soft backdrop-blur sm:-left-10">
+              <img src={logo} alt={`${trust.name} emblem`} className="h-14 w-14 object-contain" />
+              <p className="hindi mt-3 text-sm font-semibold leading-7 text-navy">{trust.tagline}</p>
+            </div>
+            <span className="absolute -right-4 -top-5 font-display text-8xl leading-none text-gold/25">“</span>
+          </div>
         </div>
       </section>
 
-      <section className="bg-cream/70 py-20 md:py-28">
-        <div className="container-shell grid gap-12 md:grid-cols-[.82fr_1.18fr]">
-          <div><p className="eyebrow">About the trust</p><h2 className="display-title mt-4 text-4xl md:text-5xl">Working for the <span className="text-gold">wellbeing</span> of all.</h2></div>
+      <section id="mission" className="bg-cream/70 py-20 md:py-28">
+        <div className="container-shell grid gap-12 md:grid-cols-[.8fr_1.2fr]">
+          <div><p className="eyebrow">Our mission</p><h2 className="display-title mt-4 text-4xl text-navy md:text-5xl">Hope begins with one caring action.</h2></div>
           <div>
-            <p className="text-lg leading-9 text-muted">Jan Kalyan Samarpan Trust is a charitable trust established to work towards public welfare. Its trust  sets out objectives covering education, medical relief, sanitation, water conservation, environmental protection and assistance for people in need.</p>
-            <p className="mt-5 leading-8 text-muted">The trust’s stated objectives extend to both rural and urban communities, with an emphasis on improving quality of life and supporting institutions and initiatives that serve the public.</p>
-            <div className="mt-7 flex items-start gap-3 rounded-2xl border border-gold/20 bg-paper p-5"><ShieldCheck className="mt-0.5 shrink-0 text-gold" size={20}/><p className="text-sm leading-7 text-muted">Our website presents the charitable aims recorded in the trust . Specific programmes, services and achievements will be added as they are confirmed by the trust.</p></div>
+            <p className="text-lg leading-9 text-muted">We believe strong communities are built when people come together with compassion, responsibility and a shared belief in possibility.</p>
+            <p className="mt-5 leading-8 text-muted">Our charitable objectives span education, medical relief, sanitation, water conservation, environmental protection and assistance for people in need. The work is guided by dignity, inclusion and practical support.</p>
+            <div className="mt-7 flex items-start gap-3 rounded-2xl border border-gold/20 bg-paper p-5"><ShieldCheck className="mt-0.5 shrink-0 text-gold" size={20} /><p className="text-sm leading-7 text-muted">We share our objectives honestly. Specific programmes and achievements will be added as they are confirmed by the trust.</p></div>
           </div>
         </div>
-      </section>
-
-      <section className="container-shell py-20 md:py-28">
-        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">Our purpose</p><h2 className="display-title mt-4 text-4xl md:text-5xl">Focus areas that matter.</h2></div><p className="max-w-md leading-7 text-muted">The trust  identifies several areas of charitable work intended to support people and strengthen communities.</p></div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {introCards.map(({icon: Icon, title, text}) => <div key={title} className="rounded-3xl border border-line bg-card p-8 transition duration-300 hover:-translate-y-1 hover:shadow-soft"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-goldLight/45 text-navy"><Icon size={22}/></span><h3 className="mt-7 font-display text-2xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted">{text}</p></div>)}
-        </div>
-        <div className="mt-8 text-center"><Link to="/services" className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:gap-3">View all focus areas <ArrowUpRight size={16}/></Link></div>
-      </section>
-
-      <section className="bg-navy py-20 text-paper md:py-24">
-        <div className="container-shell">
-          <div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-[.18em] text-goldLight">Trust leadership</p><h2 className="display-title mt-4 text-4xl md:text-5xl">The people named in the trust .</h2><p className="mt-5 leading-8 text-paper/70">The following names and roles are taken from the trust. Personal biographies and photographs were not included in the supplied documents.</p></div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {trust.settlor.map(person => <div key={person.name} className="rounded-3xl border border-paper/15 bg-paper/[.06] p-7 text-center"><img src={person.image || shalendra || logo} alt={`${person.name} portrait`} className="mx-auto h-48 w-48 rounded-2xl object-cover"/><h3 className="mt-6 font-display text-2xl">{person.name}</h3><p className="mt-1 text-xs font-bold uppercase tracking-widest text-goldLight">{person.role}</p><p className="mt-4 text-sm leading-7 text-paper/65">Named as the settlor in the trust .</p></div>)}
-            {trust.trustees.map(person => <div key={person.name} className="rounded-3xl border border-paper/15 bg-paper/[.06] p-7 text-center"><img src={person.image || logo} alt={`${person.name} portrait`} className="mx-auto h-48 w-48 rounded-2xl object-cover"/><h3 className="mt-6 font-display text-2xl">{person.name}</h3><p className="mt-1 text-xs font-bold uppercase tracking-widest text-goldLight">{person.role}</p><p className="mt-4 text-sm leading-7 text-paper/65">Named as a trustee in the trust .</p></div>)}
-          </div>
+        <div className="container-shell mt-16 grid gap-5 md:grid-cols-3">
+          {highlights.map(({ icon: Icon, title, text }) => <article key={title} className="rounded-3xl border border-line bg-paper p-7"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-goldLight/45 text-navy"><Icon size={22} /></span><h3 className="mt-6 font-display text-2xl text-navy">{title}</h3><p className="mt-3 text-sm leading-7 text-muted">{text}</p></article>)}
         </div>
       </section>
 
-      <section className="container-shell py-20 md:py-24">
-        <div className="flex flex-col items-start justify-between gap-8 rounded-[32px] bg-[#E9E1CF] p-8 md:flex-row md:items-center md:p-14">
-          <div className="max-w-xl"><p className="eyebrow">Connect with the trust</p><h2 className="display-title mt-3 text-4xl md:text-5xl">Let’s work towards a better tomorrow.</h2><p className="mt-4 leading-7 text-muted">For enquiries about the trust and its charitable objectives, please get in touch.</p></div>
-          <Link to="/contact" className="inline-flex shrink-0 items-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-bold text-paper hover:bg-blue">Contact us <ArrowUpRight size={17}/></Link>
+      <section id="focus" className="container-shell py-20 md:py-28">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">How we help</p><h2 className="display-title mt-4 text-4xl text-navy md:text-5xl">Care that reaches further.</h2></div><p className="max-w-md leading-7 text-muted">Our focus areas reflect the trust's charitable objectives and the everyday foundations of a thriving community.</p></div>
+        <div ref={focusRail} onScroll={updateFocusIndex} className="focus-grid hide-scrollbar mt-4 flex gap-5 overflow-x-auto pb-5 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
+          {[focusAreas[0], focusAreas[1], focusAreas[5], focusAreas[8]].map(({ image, title, description }, index) => <article key={title} className="focus-card group min-w-[84vw] overflow-hidden rounded-3xl border border-line bg-card transition duration-300 hover:-translate-y-1 hover:shadow-soft sm:min-w-0"><div className="relative h-60 overflow-hidden"><img src={image} alt={title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /><span className="absolute right-4 top-4 font-display text-lg text-paper drop-shadow">{String(index + 1).padStart(2, '0')}</span></div><div className="p-7"><h3 className="font-display text-2xl text-navy">{title}</h3><p className="mt-3 text-sm leading-7 text-muted">{description}</p></div></article>)}
+        </div>
+        <div className="gallery-swipe-hint sm:hidden" aria-live="polite">
+          {focusIndex === 0 && <span>Swipe →</span>}
+          {focusIndex > 0 && focusIndex < 3 && <span>← {String(focusIndex + 1).padStart(2, '0')} →</span>}
+          {focusIndex === 3 && <span>← 04 · Swipe left</span>}
+        </div>
+        <div className="mt-12 flex items-end justify-between gap-5">
+          <div><p className="eyebrow">In the community</p><h3 className="display-title mt-3 text-3xl text-navy md:text-4xl">Small acts, lasting impact.</h3></div>
+        </div>
+        <div ref={galleryRail} onScroll={updateGalleryIndex} className="gallery-grid hide-scrollbar mt-7 flex gap-5 overflow-x-auto pb-5 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+          {galleryImages.map(({ image, alt }) => <img key={alt} src={image} alt={alt} className="gallery-item h-64 min-w-[84vw] rounded-3xl object-cover md:min-w-0" />)}
+        </div>
+        <div className="gallery-swipe-hint md:hidden" aria-live="polite">
+          {galleryIndex === 0 && <span>Swipe →</span>}
+          {galleryIndex > 0 && galleryIndex < galleryImages.length - 1 && <span>← {String(galleryIndex + 1).padStart(2, '0')} →</span>}
+          {galleryIndex === galleryImages.length - 1 && <span>← {String(galleryImages.length).padStart(2, '0')} · Swipe left</span>}
         </div>
       </section>
+
+      <section id="about" className="bg-navy py-20 text-paper md:py-24">
+        <div className="container-shell grid gap-12 md:grid-cols-[1fr_.85fr] md:items-center">
+          <div><p className="text-xs font-bold uppercase tracking-[.18em] text-goldLight">About the trust</p><h2 className="display-title mt-4 max-w-2xl text-4xl md:text-5xl">Service, commitment and a shared purpose.</h2><p className="mt-6 max-w-xl leading-8 text-paper/70">Established in 2026, Jan Kalyan Samarpan Trust is committed to contributing to public welfare across rural and urban communities.</p><a href="#donate" className="mt-8 inline-flex items-center gap-3 rounded-full bg-goldLight px-7 py-4 text-sm font-bold text-navy transition hover:bg-paper">Be part of the work <ArrowUpRight size={16} /></a></div>
+          <div className="border-l border-paper/20 pl-7 md:pl-10"><p className="font-display text-5xl text-goldLight">“</p><p className="hindi text-xl leading-10 text-paper">सेवा से संस्कार और समर्पण से समाज निर्माण</p><p className="mt-6 text-sm leading-7 text-paper/60">Our name is a promise to serve with care and build with dedication.</p></div>
+        </div>
+      </section>
+
+      <section id="donate" className="donate-section py-20 md:py-28">
+        <div className="container-shell grid gap-12 md:grid-cols-[1fr_.85fr] md:items-center">
+          <div><p className="eyebrow">Support the mission</p><h2 className="display-title mt-4 max-w-2xl text-4xl text-navy md:text-5xl">Your generosity can become someone’s next opportunity.</h2><p className="mt-6 max-w-xl leading-8 text-muted">Every contribution helps us move closer to a kinder, healthier and more hopeful future. Whether you support education, medical care or community welfare, your care matters.</p><a href={`mailto:${trust.email}?subject=Donation enquiry`} className="mt-8 inline-flex items-center gap-3 rounded-full bg-navy px-7 py-4 text-sm font-bold text-paper transition hover:bg-blue">Donate or enquire <ArrowUpRight size={16} /></a></div>
+          <div className="rounded-[32px] border border-gold/25 bg-paper p-7 shadow-soft md:p-9"><p className="text-xs font-bold uppercase tracking-[.18em] text-gold">Donation information</p><h3 className="mt-5 font-display text-3xl text-navy">Give with confidence.</h3><p className="mt-4 text-sm leading-7 text-muted">Official donation instructions and payment details are being finalized. Please contact the trust directly before making a contribution.</p><div className="mt-7 border-t border-line pt-5"><p className="text-xs font-bold uppercase tracking-widest text-muted">Donation enquiries</p><a href={`mailto:${trust.email}`} className="mt-2 block break-all font-semibold text-navy hover:text-blue">{trust.email}</a><a href={`tel:${trust.phone}`} className="mt-3 block font-semibold text-navy hover:text-blue">{trust.phone}</a></div></div>
+        </div>
+      </section>
+
+      <section id="contact" className="container-shell py-20 text-center md:py-24"><p className="eyebrow">Together, we can help</p><h2 className="display-title mx-auto mt-4 max-w-2xl text-4xl text-navy md:text-5xl">Let’s build a better tomorrow.</h2><p className="mx-auto mt-5 max-w-xl leading-7 text-muted">Have a question, an idea or a wish to collaborate? We would love to hear from you.</p><a href={`mailto:${trust.email}`} className="mt-8 inline-flex items-center gap-3 rounded-full border border-navy px-7 py-4 text-sm font-bold text-navy hover:bg-navy hover:text-paper">Contact the trust <ArrowUpRight size={16} /></a></section>
     </main>
   )
 }

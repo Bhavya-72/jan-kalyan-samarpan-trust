@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { ArrowUpRight, MapPin, Phone, Mail } from 'lucide-react'
 import logo from '../assets/jan-kalyan-samarpan.png'
 import { trust } from '../data/trustData'
@@ -13,14 +12,15 @@ export default function Footer() {
             <span className="font-display text-xl font-semibold">Jan Kalyan<br/>Samarpan Trust</span>
           </div>
           <p className="hindi max-w-sm text-sm leading-7 text-paper/70">{trust.tagline}</p>
-          <p className="mt-3 max-w-sm text-sm leading-7 text-paper/65">Working towards public welfare through the charitable objectives set out in our trust .</p>
+          <p className="mt-3 max-w-sm text-sm leading-7 text-paper/65">Working towards public welfare through the charitable objectives set out in our trust.</p>
         </div>
         <div>
           <p className="text-xs font-bold uppercase tracking-[.17em] text-goldLight">Explore</p>
           <div className="mt-5 flex flex-col gap-3 text-sm text-paper/75">
-            <Link className="hover:text-paper" to="/">Home</Link>
-            <Link className="hover:text-paper" to="/services">Services</Link>
-            <Link className="hover:text-paper" to="/contact">Contact</Link>
+            <a className="hover:text-paper" href="#mission">Our mission</a>
+            <a className="hover:text-paper" href="#focus">How we help</a>
+            <a className="hover:text-paper" href="#donate">Donate</a>
+            <a className="hover:text-paper" href="#contact">Contact</a>
           </div>
         </div>
         <div>
