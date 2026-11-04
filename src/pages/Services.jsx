@@ -29,9 +29,9 @@ export default function Services() {
             setTouchStart(null)
           }}
         >
-          {focusAreas.map(({icon: Icon, title, description}, index) => (
-            <article key={title} className={`${index === activeArea ? 'block' : 'hidden'} group rounded-3xl border border-line bg-card p-7 transition duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-soft sm:block md:p-8`}>
-              <div className="flex items-center justify-between"><span className="grid h-12 w-12 place-items-center rounded-2xl bg-goldLight/45 text-navy"><Icon size={22}/></span><span className="font-display text-lg text-gold/80">{String(index + 1).padStart(2, '0')}</span></div>
+          {focusAreas.map(({image, title, description}, index) => (
+            <article key={title} className={`${index === activeArea ? 'block' : 'hidden'} group rounded-3xl border border-line bg-card p-5 transition duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-soft sm:block md:p-7`}>
+              <div className="relative h-44 overflow-hidden rounded-2xl bg-goldLight/45"><img src={image} alt={title} className="h-full w-full object-cover"/><span className="absolute right-4 top-4 font-display text-lg text-gold/80">{String(index + 1).padStart(2, '0')}</span></div>
               <h3 className="mt-8 font-display text-2xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted">{description}</p>
               <div className="mt-7 h-px w-full bg-line transition group-hover:bg-gold"/>
               <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-navy">Trust deed objective</span>
