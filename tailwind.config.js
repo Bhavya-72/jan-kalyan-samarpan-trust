@@ -4,17 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#F4F1E8',
-        cream: '#EAE5D8',
-        ink: '#263B4A',
-        muted: '#66747A',
-        navy: '#173B62',
-        blue: '#245B88',
-        gold: '#B78A36',
-        goldLight: '#E8D6A9',
-        leaf: '#5E8061',
-        line: '#DAD5C8',
-        card: '#F9F7F0'
+        paper: '#FAF9F3',
+        cream: '#F0F2E9',
+        ink: '#11130F',
+        muted: '#11130F',
+        navy: '#1F5138',
+        blue: '#2D6A4A',
+        gold: '#6E8B68',
+        goldLight: '#DCE8D8',
+        leaf: '#477653',
+        line: '#D9E1D6',
+        card: '#FFFDF8'
       },
       fontFamily: {
         sans: ['DM Sans', 'Noto Sans Devanagari', 'sans-serif'],
@@ -22,7 +22,7 @@ export default {
         hindi: ['Noto Sans Devanagari', 'sans-serif']
       },
       boxShadow: {
-        soft: '0 20px 60px rgba(38, 59, 74, 0.09)'
+        soft: '0 20px 60px rgba(31, 81, 56, 0.12)'
       }
     }
   },
