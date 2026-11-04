@@ -54,6 +54,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   background-size: 17px 17px;
 }
 .hero-section { background: linear-gradient(115deg, #faf9f3 0%, #faf9f3 57%, #f0f2e9 100%); }
+.hero-heading { -webkit-text-stroke: 1px #F0F2E9; paint-order: stroke fill; }
 .gallery-item { aspect-ratio: 4 / 3; height: auto; }
 .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; }

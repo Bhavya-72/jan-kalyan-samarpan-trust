@@ -7,6 +7,7 @@ import community from '../assets/community.png'
 import childWelfare from '../assets/child welfare.png'
 import sanitation from '../assets/sanitation.png'
 import water from '../assets/water.png'
+import wallpaper from '../assets/wallpaper.png'
 import skills from '../assets/skills.png'
 import { trust, focusAreas } from '../data/trustData'
 
@@ -41,13 +42,13 @@ export default function Home() {
 
   return (
     <main>
-      <section className="hero-section relative overflow-hidden" style={{ '--hero-image': `url("${childWelfare}")` }}>
+      <section className="hero-section relative overflow-hidden" style={{ '--hero-image': `url("${wallpaper}")` }}>
         <div className="hero-orb hero-orb-one" />
         <div className="hero-orb hero-orb-two" />
         <div className="container-shell relative grid min-h-[680px] items-center gap-14 py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
           <div className="reveal relative z-10">
             <p className="eyebrow flex items-center gap-3"><span className="h-px w-8 bg-gold" /> A charitable trust</p>
-            <h1 className="display-title mt-7 max-w-3xl text-[3.55rem] text-navy sm:text-6xl lg:text-[5.75rem]">
+            <h1 className="hero-heading display-title mt-7 max-w-3xl text-[3.55rem] text-navy sm:text-6xl lg:text-[5.75rem]">
               A little care can change a <span className="text-gold">whole future.</span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-8 text-muted md:text-lg">
